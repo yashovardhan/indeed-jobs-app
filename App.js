@@ -12,22 +12,30 @@ import ReviewScreen from './screens/ReviewScreen';
 
 export default class App extends React.Component {
   render() {
-    const MainNavigator = TabNavigator({
-      welcome: { screen: WelcomeScreen },
-      auth: { screen: AuthScreen },
-      main: {
-        screen: TabNavigator({
-          map: { screen: MapScreen },
-          deck: { screen: DeckScreen },
-          review: {
-            screen: StackNavigator({
-              review: { screen: ReviewScreen },
-              settings: { screen: SettingsScreen },
-            }),
-          },
-        }),
+    const MainNavigator = TabNavigator(
+      {
+        welcome: { screen: WelcomeScreen },
+        auth: { screen: AuthScreen },
+        main: {
+          screen: TabNavigator({
+            map: { screen: MapScreen },
+            deck: { screen: DeckScreen },
+            review: {
+              screen: StackNavigator({
+                review: { screen: ReviewScreen },
+                settings: { screen: SettingsScreen },
+              }),
+            },
+          }),
+        },
       },
-    });
+      {
+        navigationOptions: {
+          tabBarVisible: false,
+        },
+        lazy: true,
+      }
+    );
 
     return (
       <Provider store={store}>
