@@ -4,6 +4,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "expo": "^25.0.0",
+    "latlng-to-zip": "0.0.1",
     "lodash": "^4.17.5",
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
