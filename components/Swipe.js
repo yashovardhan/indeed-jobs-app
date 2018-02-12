@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager } from 'react-native';
+import {
+  View,
+  Animated,
+  PanResponder,
+  Dimensions,
+  LayoutAnimation,
+  UIManager,
+  Platform,
+} from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
@@ -88,32 +96,31 @@ class Swipe extends Component {
       return this.props.renderNoMoreCards();
     }
 
-    return this.props.data
-      .map((item, i) => {
-        if (i < this.state.index) {
-          return null;
-        }
+    const deck = this.props.data.map((item, i) => {
+      if (i < this.state.index) {
+        return null;
+      }
 
-        if (i === this.state.index) {
-          return (
-            <Animated.View
-              key={item.id}
-              style={[this.getCardStyle(), styles.cardStyle]}
-              {...this.state.panResponder.panHandlers}>
-              {this.props.renderCard(item)}
-            </Animated.View>
-          );
-        }
-
+      if (i === this.state.index) {
         return (
           <Animated.View
             key={item.id}
-            style={[styles.cardStyle, { top: 4 * (i - this.state.index) }]}>
+            style={[this.getCardStyle(), styles.cardStyle]}
+            {...this.state.panResponder.panHandlers}>
             {this.props.renderCard(item)}
           </Animated.View>
         );
-      })
-      .reverse();
+      }
+
+      return (
+        <Animated.View
+          key={item.id}
+          style={[styles.cardStyle, { top: 4 * (i - this.state.index), zIndex: -i }]}>
+          {this.props.renderCard(item)}
+        </Animated.View>
+      );
+    });
+    return Platform.OS === 'android' ? deck : deck.reverse();
   }
 
   render() {
