@@ -17,6 +17,7 @@ class Swipe extends Component {
   static defaultProps = {
     onSwipeRight: () => {},
     onSwipeLeft: () => {},
+    keyProp: 'id',
   };
 
   constructor(props) {
@@ -104,7 +105,7 @@ class Swipe extends Component {
       if (i === this.state.index) {
         return (
           <Animated.View
-            key={item.id}
+            key={item[this.props.keyProp]}
             style={[this.getCardStyle(), styles.cardStyle]}
             {...this.state.panResponder.panHandlers}>
             {this.props.renderCard(item)}
@@ -114,7 +115,7 @@ class Swipe extends Component {
 
       return (
         <Animated.View
-          key={item.id}
+          key={item[this.props.keyProp]}
           style={[styles.cardStyle, { top: 4 * (i - this.state.index), zIndex: -i }]}>
           {this.props.renderCard(item)}
         </Animated.View>
