@@ -62,6 +62,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
+    marginTop: 10,
   },
 };
 
