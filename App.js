@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Notifications } from 'expo';
 import { Alert } from 'react-native';
 
-import registerForNotifications from './services/push_notifications'
+import registerForNotifications from './services/push_notifications';
 import store from './store';
 import AuthScreen from './screens/AuthScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
