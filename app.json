@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "jobs",
-    "description": "This project is really great.",
-    "slug": "jobs",
+    "name": "Indeed-Jobs-App",
+    "description": "Find jobs within your selected location.",
+    "slug": "indeed-jobs",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],
